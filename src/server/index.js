@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import routes from "../routes/routes.js";
+
 
 dotenv.config();
 
@@ -12,8 +14,10 @@ app.use(express.json());
 
 // Basic route
 app.get("/", (req, res) => {
-  res.json({ message: "API is running..." });
+  res.status(200).json({ message: "API is running..." });
 });
+
+app.use("/", routes);
 
 // Start server
 const PORT = process.env.PORT || 5000;
